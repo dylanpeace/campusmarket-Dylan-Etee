@@ -60,11 +60,11 @@
             Filters
           </h2>
           <div class="filter-list">
-            <button class="filter" type="button" aria-pressed="true">All</button>
-            <button class="filter" type="button" aria-pressed="false">Books</button>
-            <button class="filter" type="button" aria-pressed="false">Notes</button>
-            <button class="filter" type="button" aria-pressed="false">Accessories</button>
-            <button class="filter" type="button" aria-pressed="false">EG Materials</button>
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-filter="books" aria-pressed="false">Books</button>
+            <button class="filter" type="button" data-filter="notes" aria-pressed="false">Notes</button>
+            <button class="filter" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
+            <button class="filter" type="button" data-filter="eg" aria-pressed="false">EG Materials</button>
           </div>
         </section>
 
@@ -115,6 +115,11 @@
               </div>
               <p class="card-desc">Comes with its hard cover. Keys and display work as they should.</p>
               <p class="card-seller">By Atharva Gokhale</p>
+              <div class="quantity-control">
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number" min="1" value="1">
+                <p>Total: <strong id="quantity-total">KSh 600</strong></p>
+              </div>
               <div class="card-actions">
                 <button class="btn btn-light btn-sm" type="button">
                   <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> Chat
@@ -344,6 +349,11 @@
 
         </div>
 
+        <div class="empty" id="empty" hidden>
+          <strong>No products found</strong>
+          Try a different search term or category.
+        </div>
+
       </section>
     </div>
   </main>
@@ -359,6 +369,8 @@
       <p>© 2026 CampusMarket</p>
     </div>
   </footer>
+
+  <script src="app.js"></script>
 
 </body>
 </html>
