@@ -1,11 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusMarket</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusMarket — Buy and sell study gear on your campus</title>
+  <meta name="description" content="CampusMarket is a student marketplace for books, calculators, lab coats and notes.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="CampusMarket home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </span>
+        <span class="brand-name">Campus<span>Market</span></span>
+      </a>
+
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / welcome -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 class="display display--block">
+            Buy &amp; sell study gear
+            <span class="accent">on your campus</span>
+          </h1>
+          <p class="lede">
+            CampusMarket is a student-to-student marketplace for textbooks, calculators,
+            lab coats and notes. Get what your course needs from people who just finished it,
+            at prices that make sense.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="catalog.html">Browse the catalog</a>
+          </div>
+        </div>
+
+        <aside class="panel listing-panel" aria-labelledby="just-listed">
+          <h2 class="panel-title" id="just-listed">Just listed</h2>
+
+          <div class="listing-row">
+            <span class="tile" aria-hidden="true">🧮</span>
+            <div>
+              <p class="listing-name">Casio scientific calculator</p>
+              <p class="listing-meta">Electronics · Good</p>
+            </div>
+            <p class="listing-price">KSh 600</p>
+          </div>
+
+          <div class="listing-row">
+            <span class="tile" aria-hidden="true">🥼</span>
+            <div>
+              <p class="listing-name">Lab coat</p>
+              <p class="listing-meta">Accessories · Good</p>
+            </div>
+            <p class="listing-price">KSh 160</p>
+          </div>
+
+          <div class="listing-row">
+            <span class="tile" aria-hidden="true">📏</span>
+            <div>
+              <p class="listing-name">Roller scale, 15 cm</p>
+              <p class="listing-meta">Accessories · Like new</p>
+            </div>
+            <p class="listing-price">KSh 30</p>
+          </div>
+
+          <a class="panel-link" href="catalog.html">See all listings</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <h2 class="section-title" id="how-title">How it works</h2>
+        <ol class="steps">
+          <li class="panel step">
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>Browse</h3>
+            <p>Search for a book, calculator, lab coat or set of notes. Every listing comes from a student on your campus.</p>
+          </li>
+          <li class="panel step">
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>Chat</h3>
+            <p>Message the seller to ask about condition and agree on a price that works for both of you.</p>
+          </li>
+          <li class="panel step">
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>Meet on campus</h3>
+            <p>Hand the item over between lectures. No shipping, no waiting.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Closing call to action -->
+    <section class="section home-end">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Find your gear before the next lab</h2>
+            <p>See everything students are selling right now.</p>
+          </div>
+          <a class="btn btn-dark" href="catalog.html">Browse the catalog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="footer-brand">Campus<span>Market</span></span> — made by students, for students.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+      </ul>
+      <p>© 2026 CampusMarket</p>
+    </div>
+  </footer>
 
 </body>
 </html>
