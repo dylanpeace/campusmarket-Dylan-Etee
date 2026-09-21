@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register — CampusMarket</title>
+  <meta name="description" content="Create a CampusMarket account to buy and sell study gear on campus.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="CampusMarket home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </span>
+        <span class="brand-name">Campus<span>Market</span></span>
+      </a>
+
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="register.html" aria-current="page">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="register-page" aria-labelledby="register-title">
+      <div class="register-intro">
+        <h1 class="display" id="register-title">Create your <span class="accent">CampusMarket</span> account</h1>
+        <p>Join your student community and find the study gear you need on campus.</p>
+      </div>
+
+      <form class="panel register-form" id="registration-form" novalidate>
+        <div class="form-fields">
+          <div class="form-field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" required>
+          </div>
+
+          <div class="form-field">
+            <label for="confirm-password">Confirm password</label>
+            <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" required>
+          </div>
+        </div>
+
+        <label class="password-option" for="show-password">
+          <input id="show-password" type="checkbox">
+          Show password
+        </label>
+
+        <div class="form-message" id="form-message" aria-live="polite" role="status"></div>
+        <button class="btn btn-accent" type="submit">Create account</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="footer-brand">Campus<span>Market</span></span> — made by students, for students.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+      <p>© 2026 CampusMarket</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
