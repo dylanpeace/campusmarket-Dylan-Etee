@@ -527,7 +527,15 @@ p {
 .form-message {
   min-height: 24px;
   margin-block: 20px;
+  opacity: 0;
+  transform: translateY(6px);
   font-weight: 700;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.form-message.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .form-message--error {
@@ -540,6 +548,25 @@ p {
 
 .register-form .btn {
   width: 100%;
+}
+
+.register-form.success-animation {
+  animation: successPulse 0.65s ease;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(238, 116, 68, 0);
+  }
+  40% {
+    transform: scale(1.01);
+    box-shadow: 0 0 22px rgba(238, 116, 68, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(238, 116, 68, 0);
+  }
 }
 
 .quantity-control {
@@ -749,6 +776,74 @@ p {
   display: block;
   margin-bottom: 4px;
   color: var(--text);
+}
+
+.gallery-panel {
+  margin-top: 24px;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.gallery-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.gallery-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #272727, #141414);
+  overflow: hidden;
+}
+
+#gallery-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-caption {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.gallery-status {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.field-message {
+  grid-column: 1 / -1;
+  min-height: 18px;
+  margin: 0;
+  color: #ff9b7a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.field-message.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 8. Product cards --------------------------------------------------------- */

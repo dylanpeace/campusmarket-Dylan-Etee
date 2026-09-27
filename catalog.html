@@ -100,9 +100,8 @@
         <div class="product-grid">
 
           <!-- Card 1 -->
-          <article class="card" data-category="accessories">
+          <article class="card" data-product-id="calculator" data-category="accessories">
             <div class="card-media media-slate">
-              <!-- Swap the emoji for: <img src="images/calculator.jpg" alt="Casio scientific calculator"> -->
               <span class="ph" aria-hidden="true">🧮</span>
               <span class="badge">Good</span>
             </div>
@@ -120,6 +119,7 @@
                 <label for="quantity">Quantity</label>
                 <input id="quantity" type="number" min="1" value="1">
                 <p>Total: <strong id="quantity-total">KSh 600</strong></p>
+                <p class="field-message" id="quantity-message" aria-live="polite"></p>
               </div>
               <div class="card-actions">
                 <button class="btn btn-light btn-sm" type="button">
@@ -133,7 +133,7 @@
           </article>
 
           <!-- Card 2 -->
-          <article class="card" data-category="accessories">
+          <article class="card" data-product-id="lab-coat" data-category="accessories">
             <div class="card-media media-navy">
               <span class="ph" aria-hidden="true">🥼</span>
               <span class="badge">Good</span>
@@ -160,7 +160,7 @@
           </article>
 
           <!-- Card 3 -->
-          <article class="card" data-category="accessories eg">
+          <article class="card" data-product-id="roller-scale-15" data-category="accessories eg">
             <div class="card-media media-slate">
               <span class="ph" aria-hidden="true">📏</span>
               <span class="badge">Acceptable</span>
@@ -187,7 +187,7 @@
           </article>
 
           <!-- Card 4 -->
-          <article class="card" data-category="accessories eg">
+          <article class="card" data-product-id="engineering-graphics-kit" data-category="accessories eg">
             <div class="card-media media-warm">
               <span class="ph" aria-hidden="true">📐</span>
               <span class="badge">New</span>
@@ -214,7 +214,7 @@
           </article>
 
           <!-- Card 5 -->
-          <article class="card" data-category="accessories eg">
+          <article class="card" data-product-id="maped-rounder" data-category="accessories eg">
             <div class="card-media media-olive">
               <span class="ph" aria-hidden="true">🧭</span>
               <span class="badge">Good</span>
@@ -241,7 +241,7 @@
           </article>
 
           <!-- Card 6 -->
-          <article class="card" data-category="accessories eg">
+          <article class="card" data-product-id="roller-scale-30" data-category="accessories eg">
             <div class="card-media media-slate">
               <span class="ph" aria-hidden="true">📏</span>
               <span class="badge">Like new</span>
@@ -268,7 +268,7 @@
           </article>
 
           <!-- Card 7 -->
-          <article class="card" data-category="books">
+          <article class="card" data-product-id="engineering-maths" data-category="books">
             <div class="card-media media-warm">
               <span class="ph" aria-hidden="true">📘</span>
               <span class="badge">Good</span>
@@ -295,7 +295,7 @@
           </article>
 
           <!-- Card 8 -->
-          <article class="card" data-category="notes">
+          <article class="card" data-product-id="physics-notes" data-category="notes">
             <div class="card-media media-navy">
               <span class="ph" aria-hidden="true">📝</span>
               <span class="badge">Like new</span>
@@ -322,7 +322,7 @@
           </article>
 
           <!-- Card 9 -->
-          <article class="card" data-category="eg">
+          <article class="card" data-product-id="drawing-board" data-category="eg">
             <div class="card-media media-olive">
               <span class="ph" aria-hidden="true">📋</span>
               <span class="badge">Good</span>
@@ -349,6 +349,21 @@
           </article>
 
         </div>
+
+        <section class="gallery-panel panel" id="gallery-panel" aria-labelledby="gallery-title">
+          <div class="gallery-header">
+            <h2 class="panel-title" id="gallery-title">Featured products</h2>
+            <div class="gallery-controls">
+              <button id="gallery-prev" class="btn btn-light btn-sm" type="button">Previous</button>
+              <button id="gallery-next" class="btn btn-accent btn-sm" type="button">Next</button>
+            </div>
+          </div>
+          <div class="gallery-stage">
+            <img id="gallery-image" src="" alt="Featured CampusMarket product image">
+          </div>
+          <p id="gallery-caption" class="gallery-caption"></p>
+          <p id="gallery-status" class="gallery-status" aria-live="polite"></p>
+        </section>
 
         <div class="empty" id="empty" hidden>
           <strong>No products found</strong>
