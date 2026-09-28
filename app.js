@@ -137,7 +137,6 @@ function updateGallery(visibleProducts) {
   if (!galleryImage || !galleryCaption || !galleryStatus) {
     return;
   }
-
   galleryState.filteredProducts = visibleProducts;
 
   if (!visibleProducts.length) {
@@ -150,6 +149,7 @@ function updateGallery(visibleProducts) {
     galleryImage.alt = 'No products match the current filter selection';
     galleryCaption.textContent = 'No matching products in this filter.';
     galleryStatus.textContent = '0 / 0';
+    updateReviewProduct(null);
     return;
   }
 
@@ -162,6 +162,7 @@ function updateGallery(visibleProducts) {
   galleryImage.alt = selectedProduct.alt;
   galleryCaption.textContent = `${selectedProduct.name} — KSh ${selectedProduct.price.toLocaleString()}`;
   galleryStatus.textContent = `${galleryState.index + 1} / ${visibleProducts.length}`;
+  updateReviewProduct(selectedProduct);
 }
 
 const cards = document.querySelectorAll('.card');
@@ -173,6 +174,16 @@ const quantityTotal = document.querySelector('#quantity-total');
 const quantityMessage = document.querySelector('#quantity-message');
 const galleryPrevious = document.querySelector('#gallery-prev');
 const galleryNext = document.querySelector('#gallery-next');
+const reviewForm = document.querySelector('#review-form');
+const reviewProductContext = document.querySelector('#review-product-context');
+const reviewComment = document.querySelector('#review-comment');
+const reviewMessage = document.querySelector('#review-message');
+const reviewList = document.querySelector('#review-list');
+const reviewsEmpty = document.querySelector('#reviews-empty');
+const ratingButtons = document.querySelectorAll('.rating-star');
+const reviewEntries = [];
+let selectedRating = 0;
+let activeReviewProductId = null;
 
 function getVisibleProducts() {
   const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
@@ -240,6 +251,148 @@ if (galleryPrevious && galleryNext) {
 
     galleryState.index = (galleryState.index + 1) % galleryState.filteredProducts.length;
     updateGallery(galleryState.filteredProducts);
+  });
+}
+
+function setReviewMessage(message, type) {
+  if (!reviewMessage) {
+    return;
+  }
+
+  reviewMessage.textContent = message;
+  reviewMessage.classList.toggle('is-visible', message.length > 0);
+  reviewMessage.classList.remove('form-message--error', 'form-message--success');
+
+  if (type === 'error') {
+    reviewMessage.classList.add('form-message--error');
+  } else if (type === 'success') {
+    reviewMessage.classList.add('form-message--success');
+  }
+}
+
+function renderProductReviews(productId) {
+  if (!reviewList || !reviewsEmpty) {
+    return;
+  }
+
+  const productReviews = reviewEntries.filter((review) => review.productId === productId);
+  const reviewElements = productReviews.map((review) => {
+    const item = document.createElement('li');
+    item.className = 'review-entry';
+
+    const stars = document.createElement('p');
+    stars.className = 'review-stars';
+    stars.textContent = `${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}`;
+    stars.setAttribute('aria-label', `${review.rating} out of 5 stars`);
+
+    const comment = document.createElement('p');
+    comment.className = 'review-comment-text';
+    comment.textContent = review.comment;
+
+    item.append(stars, comment);
+    return item;
+  });
+
+  reviewList.replaceChildren(...reviewElements);
+  reviewsEmpty.hidden = productReviews.length > 0;
+}
+
+function updateReviewProduct(product) {
+  const productId = product ? product.id : null;
+  const changedProduct = productId !== activeReviewProductId;
+
+  if (changedProduct) {
+    activeReviewProductId = productId;
+    selectedRating = 0;
+    if (reviewForm) {
+      reviewForm.reset();
+    }
+    setReviewMessage('', '');
+  }
+
+  if (reviewProductContext) {
+    reviewProductContext.textContent = product ? `Reviewing: ${product.name}` : 'No product selected.';
+  }
+
+  for (const button of ratingButtons) {
+    const rating = Number(button.dataset.rating);
+    button.disabled = !product;
+    button.classList.toggle('is-selected', rating <= selectedRating);
+    button.setAttribute('aria-pressed', String(rating === selectedRating));
+  }
+
+  if (reviewComment) {
+    reviewComment.disabled = !product;
+  }
+
+  if (reviewForm) {
+    const submitButton = reviewForm.querySelector('[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = !product;
+    }
+  }
+
+  renderProductReviews(productId);
+}
+
+for (const button of ratingButtons) {
+  button.addEventListener('click', function () {
+    selectedRating = Number(button.dataset.rating);
+
+    for (const ratingButton of ratingButtons) {
+      const rating = Number(ratingButton.dataset.rating);
+      ratingButton.classList.toggle('is-selected', rating <= selectedRating);
+      ratingButton.setAttribute('aria-pressed', String(rating === selectedRating));
+    }
+
+    setReviewMessage('', '');
+  });
+}
+
+if (reviewComment) {
+  reviewComment.addEventListener('input', function () {
+    setReviewMessage('', '');
+  });
+}
+
+if (reviewForm) {
+  reviewForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const comment = reviewComment.value.trim();
+    const errors = [];
+
+    if (selectedRating === 0) {
+      errors.push('Please select a star rating.');
+    }
+
+    if (comment.length === 0) {
+      errors.push('Please enter a comment.');
+    }
+
+    if (!activeReviewProductId) {
+      errors.push('Select a product before submitting a review.');
+    }
+
+    if (errors.length > 0) {
+      setReviewMessage(errors.join(' '), 'error');
+      return;
+    }
+
+    reviewEntries.push({
+      productId: activeReviewProductId,
+      rating: selectedRating,
+      comment
+    });
+    renderProductReviews(activeReviewProductId);
+    setReviewMessage(`Your review was added for ${getProductById(activeReviewProductId).name}.`, 'success');
+    reviewForm.reset();
+    selectedRating = 0;
+
+    for (const button of ratingButtons) {
+      button.classList.remove('is-selected');
+      button.setAttribute('aria-pressed', 'false');
+    }
   });
 }
 

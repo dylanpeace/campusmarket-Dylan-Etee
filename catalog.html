@@ -365,6 +365,42 @@
           <p id="gallery-status" class="gallery-status" aria-live="polite"></p>
         </section>
 
+        <section class="review-panel panel" aria-labelledby="review-title">
+          <div class="review-header">
+            <div>
+              <h2 class="panel-title" id="review-title">Product reviews</h2>
+              <p class="review-product-context" id="review-product-context" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <form class="review-form" id="review-form" novalidate>
+            <fieldset class="rating-fieldset">
+              <legend>Rate this product</legend>
+              <div class="rating-controls" role="group" aria-label="Rate this product">
+                <button class="rating-star" type="button" data-rating="1" aria-label="1 star" aria-pressed="false">★</button>
+                <button class="rating-star" type="button" data-rating="2" aria-label="2 stars" aria-pressed="false">★</button>
+                <button class="rating-star" type="button" data-rating="3" aria-label="3 stars" aria-pressed="false">★</button>
+                <button class="rating-star" type="button" data-rating="4" aria-label="4 stars" aria-pressed="false">★</button>
+                <button class="rating-star" type="button" data-rating="5" aria-label="5 stars" aria-pressed="false">★</button>
+              </div>
+            </fieldset>
+
+            <div class="form-field">
+              <label for="review-comment">Your comment</label>
+              <textarea id="review-comment" name="comment" rows="4" required></textarea>
+            </div>
+
+            <p class="form-message review-message" id="review-message" role="status" aria-live="polite"></p>
+            <button class="btn btn-accent" type="submit">Submit Review</button>
+          </form>
+
+          <section class="reviews-listing" aria-labelledby="reviews-list-title">
+            <h3 class="reviews-list-title" id="reviews-list-title">Reviews</h3>
+            <p class="reviews-empty" id="reviews-empty">No reviews yet for this product.</p>
+            <ul class="review-list" id="review-list" aria-live="polite"></ul>
+          </section>
+        </section>
+
         <div class="empty" id="empty" hidden>
           <strong>No products found</strong>
           Try a different search term or category.

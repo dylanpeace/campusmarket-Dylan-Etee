@@ -829,6 +829,149 @@ p {
   text-transform: uppercase;
 }
 
+.review-panel {
+  margin-top: 24px;
+}
+
+.review-product-context {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.review-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.rating-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rating-fieldset legend {
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.rating-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rating-star {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--muted);
+  font: 700 1.6rem/1 var(--font);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.rating-star:hover,
+.rating-star.is-selected {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.rating-star:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.review-form .form-field textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: 600 0.9rem/1.5 var(--font);
+  resize: vertical;
+}
+
+.review-form .form-field textarea:focus-visible {
+  border-color: var(--accent);
+}
+
+.review-form .form-field textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.review-form .review-message {
+  margin-block: 0;
+}
+
+.review-form [type="submit"] {
+  justify-self: start;
+}
+
+.reviews-listing {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.reviews-list-title {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.reviews-empty {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.review-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-entry {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  animation: reviewAppear 0.3s ease both;
+}
+
+.review-stars {
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.review-comment-text {
+  margin-top: 6px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@keyframes reviewAppear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .field-message {
   grid-column: 1 / -1;
   min-height: 18px;
